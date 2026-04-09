@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.6
+
+- updated syntax highlighting for newer Monster language features
+- added highlighting for `import`, `extern`, `struct`, `break`, `continue`, and `as`
+- added highlighting for `u8`, `usize`, `print_ln_*`, `len`, and `slice`
+
 ## 0.1.5
 
 - refreshed Marketplace metadata after the GitHub username change

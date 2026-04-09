@@ -109,7 +109,7 @@
       "patterns": [
         {
           "name": "support.function.builtin.monster",
-          "match": "\\b(print_i32|print_bool|print_str|read_i32)\\b(?=\\s*\\()"
+          "match": "\\b(print_i32|print_bool|print_str|print_ln_i32|print_ln_bool|print_ln_str|read_i32|len|slice)\\b(?=\\s*\\()"
         }
       ]
     },
@@ -117,7 +117,7 @@
       "patterns": [
         {
           "name": "keyword.control.monster",
-          "match": "\\b(fn|let|mut|return|if|else|while)\\b"
+          "match": "\\b(import|extern|fn|struct|let|mut|return|if|else|while|break|continue|as)\\b"
         }
       ]
     },
@@ -125,7 +125,7 @@
       "patterns": [
         {
           "name": "storage.type.monster",
-          "match": "\\b(i32|bool|str|void)\\b"
+          "match": "\\b(i32|u8|usize|bool|str|void)\\b"
         }
       ]
     },
