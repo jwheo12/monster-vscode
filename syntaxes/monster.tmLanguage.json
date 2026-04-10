@@ -12,6 +12,9 @@
       "include": "#function-declarations"
     },
     {
+      "include": "#enum-declarations"
+    },
+    {
       "include": "#variable-declarations"
     },
     {
@@ -86,6 +89,22 @@
         }
       ]
     },
+    "enum-declarations": {
+      "patterns": [
+        {
+          "name": "meta.enum.definition.monster",
+          "match": "\\b(enum)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "keyword.declaration.monster"
+            },
+            "2": {
+              "name": "entity.name.type.enum.monster"
+            }
+          }
+        }
+      ]
+    },
     "variable-declarations": {
       "patterns": [
         {
@@ -109,7 +128,7 @@
       "patterns": [
         {
           "name": "support.function.builtin.monster",
-          "match": "\\b(print_i32|print_bool|print_str|print_ln_i32|print_ln_bool|print_ln_str|read_i32|len|slice)\\b(?=\\s*\\()"
+          "match": "\\b(print_i32|print_bool|print_str|print_ln_i32|print_ln_bool|print_ln_str|read_i32|read_file|write_file|len|slice|strlen|memcmp|memcpy|str_eq|is|payload)\\b(?=\\s*\\()"
         }
       ]
     },
@@ -117,7 +136,7 @@
       "patterns": [
         {
           "name": "keyword.control.monster",
-          "match": "\\b(import|extern|fn|struct|let|mut|return|if|else|while|break|continue|as)\\b"
+          "match": "\\b(import|extern|fn|struct|enum|let|mut|return|if|else|while|break|continue|match|as|sizeof)\\b"
         }
       ]
     },
@@ -134,6 +153,10 @@
         {
           "name": "constant.language.boolean.monster",
           "match": "\\b(true|false)\\b"
+        },
+        {
+          "name": "constant.other.enum-variant.monster",
+          "match": "\\b([A-Z][A-Za-z0-9_]*)\\b(?=\\s*(?:\\(|=>|,|\\}|\\)))"
         }
       ]
     },
@@ -157,7 +180,7 @@
       "patterns": [
         {
           "name": "keyword.operator.monster",
-          "match": "==|!=|<=|>=|&&|\\|\\||->|[-+*/=<>!:]"
+          "match": "==|!=|<=|>=|&&|\\|\\||=>|->|[-+*/=<>!:]"
         }
       ]
     }

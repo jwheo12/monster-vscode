@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.7
+
+- refreshed syntax highlighting for `enum`, payload enum patterns, `match`, and `sizeof`
+- added highlighting for newer builtins including file I/O and string/byte utilities
+- improved editor bracket support for arrays, slices, and indexing with `[]`
+
 ## 0.1.6
 
 - updated syntax highlighting for newer Monster language features
