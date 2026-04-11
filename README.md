@@ -30,6 +30,7 @@ code --install-extension monster-lang.monster-language
 - syntax highlighting for current Monster syntax, including `const`, `struct`, `enum`, payload enums, `match`, `sizeof`, pointers, slices, imports, and `print_ln_*`
 - syntax highlighting for `Monster.toml` project manifest sections and build options
 - hover help for Monster keywords, primitive types, builtins, and manifest keys
+- autocomplete suggestions for Monster keywords, builtins, primitive types, and `Monster.toml` keys
 - line comments and bracket rules
 - starter snippets for `main`, `mainargs`, `hello`, `import`, `extern`, `const`, `struct`, `enum`, `match`, `if`, and `while`
 - Monster file icon support for themes that do not define one already
@@ -70,6 +71,7 @@ Today this extension focuses on the basics:
 
 - syntax coloring
 - hover help
+- autocomplete
 - snippets
 - file association for `.mnst` and `Monster.toml`
 - icon support

@@ -296,6 +296,289 @@ const MANIFEST_HOVER_ENTRIES = new Map(
   })
 );
 
+const MONSTER_COMPLETION_ENTRIES = [
+  {
+    label: "print_i32",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "print_i32(${1:value})",
+    detail: "builtin: print_i32(value: i32) -> void",
+  },
+  {
+    label: "print_bool",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "print_bool(${1:value})",
+    detail: "builtin: print_bool(value: bool) -> void",
+  },
+  {
+    label: "print_str",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "print_str(${1:value})",
+    detail: "builtin: print_str(value: str) -> void",
+  },
+  {
+    label: "print_ln_i32",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "print_ln_i32(${1:value})",
+    detail: "builtin: print_ln_i32(value: i32) -> void",
+  },
+  {
+    label: "print_ln_bool",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "print_ln_bool(${1:value})",
+    detail: "builtin: print_ln_bool(value: bool) -> void",
+  },
+  {
+    label: "print_ln_str",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "print_ln_str(${1:value})",
+    detail: "builtin: print_ln_str(value: str) -> void",
+  },
+  {
+    label: "read_i32",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "read_i32()",
+    detail: "builtin: read_i32() -> i32",
+  },
+  {
+    label: "read_file",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "read_file(${1:path}, ${2:len_out})",
+    detail: "builtin: read_file(path: str, len_out: *usize) -> *u8",
+  },
+  {
+    label: "write_file",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "write_file(${1:path}, ${2:data}, ${3:len})",
+    detail: "builtin: write_file(path: str, data: *u8, len: usize) -> i32",
+  },
+  {
+    label: "len",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "len(${1:value})",
+    detail: "builtin: len(array_or_slice) -> usize",
+  },
+  {
+    label: "slice",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "slice(${1:array})",
+    detail: "builtin: slice(array) -> [T]",
+  },
+  {
+    label: "strlen",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "strlen(${1:value})",
+    detail: "builtin: strlen(value: str) -> usize",
+  },
+  {
+    label: "memcmp",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "memcmp(${1:lhs}, ${2:rhs}, ${3:len})",
+    detail: "builtin: memcmp(lhs: *u8, rhs: *u8, len: usize) -> i32",
+  },
+  {
+    label: "memcpy",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "memcpy(${1:dst}, ${2:src}, ${3:len})",
+    detail: "builtin: memcpy(dst: *u8, src: *u8, len: usize) -> *u8",
+  },
+  {
+    label: "str_eq",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "str_eq(${1:lhs}, ${2:rhs})",
+    detail: "builtin: str_eq(lhs: str, rhs: str) -> bool",
+  },
+  {
+    label: "is",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "is(${1:value}, ${2:Variant})",
+    detail: "builtin: is(value, Variant) -> bool",
+  },
+  {
+    label: "payload",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "payload(${1:value}, ${2:Variant})",
+    detail: "builtin: payload(value, Variant) -> T",
+  },
+  {
+    label: "sizeof",
+    kind: vscode.CompletionItemKind.Function,
+    insertText: "sizeof(${1:Type})",
+    detail: "builtin: sizeof(Type) -> usize",
+  },
+  {
+    label: "main",
+    kind: vscode.CompletionItemKind.Snippet,
+    insertText: "fn main() -> i32 {\n    ${1:print_ln_str(\"Hello, Monster!\");}\n    return 0;\n}",
+    detail: "snippet: main function",
+  },
+  {
+    label: "mainargs",
+    kind: vscode.CompletionItemKind.Snippet,
+    insertText: "fn main(argc: i32, argv: **u8) -> i32 {\n    $0\n    return 0;\n}",
+    detail: "snippet: main(argc, argv)",
+  },
+  {
+    label: "fn",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "fn ${1:name}(${2}) -> ${3:i32} {\n    $0\n}",
+    detail: "keyword: function declaration",
+  },
+  {
+    label: "extern",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "extern fn ${1:name}(${2:param}: ${3:i32}) -> ${4:i32};",
+    detail: "keyword: extern function declaration",
+  },
+  {
+    label: "import",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "import \"${1:path/to/file.mnst}\";",
+    detail: "keyword: source import",
+  },
+  {
+    label: "importas",
+    kind: vscode.CompletionItemKind.Snippet,
+    insertText: "import \"${1:path/to/file.mnst}\" as ${2:module};",
+    detail: "snippet: aliased import",
+  },
+  {
+    label: "struct",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "struct ${1:Name} {\n    ${2:field}: ${3:i32},\n}",
+    detail: "keyword: struct declaration",
+  },
+  {
+    label: "enum",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "enum ${1:Name} {\n    ${2:Variant},\n    ${3:Payload}(${4:i32}),\n}",
+    detail: "keyword: enum declaration",
+  },
+  {
+    label: "const",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "const ${1:NAME}: ${2:i32} = ${3:0};",
+    detail: "keyword: top-level constant",
+  },
+  {
+    label: "let",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "let ${1:name}: ${2:i32} = ${3:0};",
+    detail: "keyword: local binding",
+  },
+  {
+    label: "let mut",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "let mut ${1:name}: ${2:i32} = ${3:0};",
+    detail: "keyword: mutable local binding",
+  },
+  {
+    label: "if",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "if ${1:condition} {\n    $0\n}",
+    detail: "keyword: if statement",
+  },
+  {
+    label: "while",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "while ${1:condition} {\n    $0\n}",
+    detail: "keyword: while loop",
+  },
+  {
+    label: "match",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "match ${1:value} {\n    ${2:Variant} => ${3:0},\n    ${4:Other} => ${5:1},\n}",
+    detail: "keyword: match expression",
+  },
+  {
+    label: "return",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "return ${1:value};",
+    detail: "keyword: return statement",
+  },
+  {
+    label: "break",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "break;",
+    detail: "keyword: break statement",
+  },
+  {
+    label: "continue",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "continue;",
+    detail: "keyword: continue statement",
+  },
+  ...["i32", "u8", "usize", "bool", "str", "void"].map((label) => ({
+    label,
+    kind: vscode.CompletionItemKind.TypeParameter,
+    insertText: label,
+    detail: "Monster primitive type",
+  })),
+  ...["true", "false"].map((label) => ({
+    label,
+    kind: vscode.CompletionItemKind.Value,
+    insertText: label,
+    detail: "Monster boolean literal",
+  })),
+];
+
+const MANIFEST_COMPLETION_ENTRIES = [
+  {
+    label: "manifest",
+    kind: vscode.CompletionItemKind.Snippet,
+    insertText:
+      '[package]\nname = "${1:hello-monster}"\nentry = "${2:src/main.mnst}"\n\n[build]\nprofile = "${3|release,debug|}"\nopt-level = ${4|0,1,2,3|}\ncpu = "${5|generic,native|}"',
+    detail: "snippet: complete Monster.toml manifest",
+  },
+  {
+    label: "package",
+    kind: vscode.CompletionItemKind.Module,
+    insertText: "[package]",
+    detail: "manifest section",
+  },
+  {
+    label: "build",
+    kind: vscode.CompletionItemKind.Module,
+    insertText: "[build]",
+    detail: "manifest section",
+  },
+  {
+    label: "name",
+    kind: vscode.CompletionItemKind.Property,
+    insertText: 'name = "${1:hello-monster}"',
+    detail: "manifest key",
+  },
+  {
+    label: "entry",
+    kind: vscode.CompletionItemKind.Property,
+    insertText: 'entry = "${1:src/main.mnst}"',
+    detail: "manifest key",
+  },
+  {
+    label: "profile",
+    kind: vscode.CompletionItemKind.Property,
+    insertText: 'profile = "${1|release,debug|}"',
+    detail: "manifest key",
+  },
+  {
+    label: "opt-level",
+    kind: vscode.CompletionItemKind.Property,
+    insertText: "opt-level = ${1|0,1,2,3|}",
+    detail: "manifest key",
+  },
+  {
+    label: "cpu",
+    kind: vscode.CompletionItemKind.Property,
+    insertText: 'cpu = "${1|generic,native|}"',
+    detail: "manifest key",
+  },
+  ...["release", "debug", "generic", "native"].map((label) => ({
+    label,
+    kind: vscode.CompletionItemKind.Value,
+    insertText: label,
+    detail: "manifest value",
+  })),
+];
+
 function buildHover(word, wordRange, entry, codeLanguage, docsUrl) {
   const markdown = new vscode.MarkdownString();
   markdown.supportHtml = false;
@@ -328,6 +611,32 @@ function createHoverProvider(entries, wordRegex, codeLanguage, docsUrl) {
   };
 }
 
+function buildCompletionItem(entry, index, docsUrl) {
+  const item = new vscode.CompletionItem(entry.label, entry.kind);
+  item.insertText = new vscode.SnippetString(entry.insertText);
+  item.detail = entry.detail;
+  item.sortText = `${String(index).padStart(3, "0")}_${entry.label}`;
+
+  const docsEntry = HOVER_ENTRIES.get(entry.label) || MANIFEST_HOVER_ENTRIES.get(entry.label);
+  const documentation = docsEntry?.description;
+
+  if (documentation) {
+    const markdown = new vscode.MarkdownString(documentation);
+    markdown.appendMarkdown(`\n\n[Monster docs](${docsUrl})`);
+    item.documentation = markdown;
+  }
+
+  return item;
+}
+
+function createCompletionProvider(entries, docsUrl) {
+  return {
+    provideCompletionItems() {
+      return entries.map((entry, index) => buildCompletionItem(entry, index, docsUrl));
+    },
+  };
+}
+
 function activate(context) {
   const monsterProvider = vscode.languages.registerHoverProvider(
     "monster",
@@ -337,8 +646,26 @@ function activate(context) {
     "monster-manifest",
     createHoverProvider(MANIFEST_HOVER_ENTRIES, /[A-Za-z_][A-Za-z0-9_-]*/, "toml", CLI_DOCS_URL)
   );
+  const monsterCompletionProvider = vscode.languages.registerCompletionItemProvider(
+    "monster",
+    createCompletionProvider(MONSTER_COMPLETION_ENTRIES, DOCS_URL),
+    ".",
+    "_"
+  );
+  const manifestCompletionProvider = vscode.languages.registerCompletionItemProvider(
+    "monster-manifest",
+    createCompletionProvider(MANIFEST_COMPLETION_ENTRIES, CLI_DOCS_URL),
+    "-",
+    "_",
+    "\""
+  );
 
-  context.subscriptions.push(monsterProvider, manifestProvider);
+  context.subscriptions.push(
+    monsterProvider,
+    manifestProvider,
+    monsterCompletionProvider,
+    manifestCompletionProvider
+  );
 }
 
 function deactivate() {}

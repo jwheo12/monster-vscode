@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1
+
+- added autocomplete suggestions for Monster keywords, builtins, primitive types, and snippets
+- added autocomplete suggestions for `Monster.toml` manifest sections, keys, and common values
+
 ## 0.2.0
 
 - published as a stable release
