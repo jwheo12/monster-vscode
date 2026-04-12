@@ -42,8 +42,9 @@ const HOVER_ENTRIES = new Map(
     },
     let: {
       kind: "keyword",
-      signature: "let name: Type = value;\nlet mut name: Type = value;",
-      description: "Declares a local variable. Use `mut` when the variable should be assignable.",
+      signature: "let name = value;\nlet name: Type = value;",
+      description:
+        "Declares a local variable. The type can be inferred from the initializer or written explicitly.",
     },
     const: {
       kind: "keyword",
@@ -53,7 +54,7 @@ const HOVER_ENTRIES = new Map(
     },
     mut: {
       kind: "keyword",
-      signature: "let mut name: Type = value;",
+      signature: "let mut name = value;\nlet mut name: Type = value;",
       description: "Marks a local binding as mutable, allowing later assignment.",
     },
     return: {
@@ -462,14 +463,26 @@ const MONSTER_COMPLETION_ENTRIES = [
   {
     label: "let",
     kind: vscode.CompletionItemKind.Keyword,
-    insertText: "let ${1:name}: ${2:i32} = ${3:0};",
-    detail: "keyword: local binding",
+    insertText: "let ${1:name} = ${2:value};",
+    detail: "keyword: inferred local binding",
   },
   {
     label: "let mut",
     kind: vscode.CompletionItemKind.Keyword,
+    insertText: "let mut ${1:name} = ${2:value};",
+    detail: "keyword: inferred mutable local binding",
+  },
+  {
+    label: "let typed",
+    kind: vscode.CompletionItemKind.Snippet,
+    insertText: "let ${1:name}: ${2:i32} = ${3:0};",
+    detail: "snippet: explicitly typed local binding",
+  },
+  {
+    label: "let mut typed",
+    kind: vscode.CompletionItemKind.Snippet,
     insertText: "let mut ${1:name}: ${2:i32} = ${3:0};",
-    detail: "keyword: mutable local binding",
+    detail: "snippet: explicitly typed mutable local binding",
   },
   {
     label: "if",

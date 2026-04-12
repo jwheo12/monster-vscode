@@ -32,7 +32,7 @@ code --install-extension monster-lang.monster-language
 - hover help for Monster keywords, primitive types, builtins, and manifest keys
 - autocomplete suggestions for Monster keywords, builtins, primitive types, and `Monster.toml` keys
 - line comments and bracket rules
-- starter snippets for `main`, `mainargs`, `hello`, `import`, `extern`, `const`, `struct`, `enum`, `match`, `if`, and `while`
+- starter snippets for `main`, `mainargs`, `hello`, `import`, `extern`, `const`, `let`, `letmut`, `lettyped`, `struct`, `enum`, `match`, `if`, and `while`
 - Monster file icon support for themes that do not define one already
 
 ## Quick Start

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.2
+
+- updated `let` autocomplete and snippets for local type inference
+- kept explicit-type `let` snippets available as `lettyped` and `letmuttyped`
+
 ## 0.2.1
 
 - added autocomplete suggestions for Monster keywords, builtins, primitive types, and snippets

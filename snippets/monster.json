@@ -57,6 +57,34 @@
     ],
     "description": "Monster top-level constant"
   },
+  "let": {
+    "prefix": "let",
+    "body": [
+      "let ${1:name} = ${2:value};"
+    ],
+    "description": "Monster inferred local binding"
+  },
+  "let mut": {
+    "prefix": "letmut",
+    "body": [
+      "let mut ${1:name} = ${2:value};"
+    ],
+    "description": "Monster inferred mutable local binding"
+  },
+  "let typed": {
+    "prefix": "lettyped",
+    "body": [
+      "let ${1:name}: ${2:i32} = ${3:0};"
+    ],
+    "description": "Monster explicitly typed local binding"
+  },
+  "let mut typed": {
+    "prefix": "letmuttyped",
+    "body": [
+      "let mut ${1:name}: ${2:i32} = ${3:0};"
+    ],
+    "description": "Monster explicitly typed mutable local binding"
+  },
   "struct": {
     "prefix": "struct",
     "body": [
